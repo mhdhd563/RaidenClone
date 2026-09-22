@@ -50,7 +50,7 @@ public class BombSystem {
         
         Player player = entityManager.getPlayer();
         if (player != null) {
-            player.screenShake = 40;
+            player.setScreenShake(40);
         }
         
         // Create bomb wave particle
