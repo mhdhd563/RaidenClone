@@ -3,6 +3,7 @@ package com.raidenclone.game;
 import android.os.Bundle;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.raidenclone.game.RaidenClone;
 
 public class AndroidLauncher extends AndroidApplication {
     @Override
