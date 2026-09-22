@@ -2,6 +2,7 @@ package com.raidenclone.game.systems;
 
 import com.badlogic.gdx.utils.Array;
 import com.raidenclone.game.entities.*;
+import com.raidenclone.game.utils.AssetManager;
 
 public class EntityManager {
     private Array<Entity> entities = new Array<>();
@@ -13,6 +14,15 @@ public class EntityManager {
     private Array<Powerup> powerups = new Array<>();
     private Array<Particle> particles = new Array<>();
     private Player player;
+    private AssetManager assetManager;
+    
+    public void setAssetManager(AssetManager assetManager) {
+        this.assetManager = assetManager;
+    }
+    
+    public AssetManager getAssetManager() {
+        return assetManager;
+    }
     
     public void addEntity(Entity entity) {
         toAdd.add(entity);

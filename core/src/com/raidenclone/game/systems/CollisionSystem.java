@@ -2,6 +2,7 @@ package com.raidenclone.game.systems;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.raidenclone.game.entities.*;
+import com.raidenclone.game.utils.AssetManager;
 
 public class CollisionSystem {
     private EntityManager entityManager;
@@ -134,6 +135,7 @@ public class CollisionSystem {
     private void createExplosionParticles(Enemy enemy) {
         int count = enemy.getType() == Enemy.Type.BOSS ? 50 : 
                       enemy.getType() == Enemy.Type.HEAVY ? 25 : 15;
+        AssetManager assetManager = entityManager.getAssetManager();
         
         for (int i = 0; i < count; i++) {
             float angle = MathUtils.random(MathUtils.PI2);
@@ -141,8 +143,7 @@ public class CollisionSystem {
             Particle p = new Particle(enemy.getPosition().x + enemy.getWidth()/2, 
                                     enemy.getPosition().y + enemy.getHeight()/2,
                                     new com.badlogic.gdx.graphics.g2d.TextureRegion(
-                                        com.raidenclone.game.utils.AssetManager.getInstance()
-                                            .get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
+                                        assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
             p.velocity.set(MathUtils.cos(angle) * speed, MathUtils.sin(angle) * speed);
             p.color.set(1, MathUtils.random(0.3f, 0.8f), 0, 1);
             p.endColor.set(1, 0, 0, 0);

@@ -25,8 +25,8 @@ public class Particle extends Entity {
         this.velocity.set(MathUtils.random(-100, 100), MathUtils.random(-100, 100));
     }
     
-    public static Particle createExplosion(float x, float y, Color color) {
-        Particle p = new Particle(x, y, new TextureRegion(AssetManager.getInstance().get(AssetManager.EXPLOSION)));
+    public static Particle createExplosion(float x, float y, Color color, AssetManager assetManager) {
+        Particle p = new Particle(x, y, new TextureRegion(assetManager.get(AssetManager.EXPLOSION)));
         p.color.set(color);
         p.endColor.set(color.r, color.g, color.b, 0);
         p.maxLifetime = MathUtils.random(0.5f, 1.0f);
@@ -39,8 +39,8 @@ public class Particle extends Entity {
         return p;
     }
     
-    public static Particle createSpark(float x, float y, Vector2 direction) {
-        Particle p = new Particle(x, y, new TextureRegion(AssetManager.getInstance().get(AssetManager.EXPLOSION)));
+    public static Particle createSpark(float x, float y, Vector2 direction, AssetManager assetManager) {
+        Particle p = new Particle(x, y, new TextureRegion(assetManager.get(AssetManager.EXPLOSION)));
         p.color.set(1, 1, 0.5f, 1);
         p.endColor.set(1, 0.3f, 0, 0);
         p.maxLifetime = MathUtils.random(0.2f, 0.5f);
@@ -51,8 +51,8 @@ public class Particle extends Entity {
         return p;
     }
     
-    public static Particle createEngineTrail(float x, float y) {
-        Particle p = new Particle(x, y, new TextureRegion(AssetManager.getInstance().get(AssetManager.EXPLOSION)));
+    public static Particle createEngineTrail(float x, float y, AssetManager assetManager) {
+        Particle p = new Particle(x, y, new TextureRegion(assetManager.get(AssetManager.EXPLOSION)));
         p.color.set(0, 0.8f, 1, 0.6f);
         p.endColor.set(0, 0.3f, 0.8f, 0);
         p.maxLifetime = MathUtils.random(0.15f, 0.3f);
@@ -64,8 +64,8 @@ public class Particle extends Entity {
         return p;
     }
     
-    public static Particle createBombWave(float x, float y, float maxRadius) {
-        Particle p = new Particle(x, y, new TextureRegion(AssetManager.getInstance().get(AssetManager.EXPLOSION)));
+    public static Particle createBombWave(float x, float y, float maxRadius, AssetManager assetManager) {
+        Particle p = new Particle(x, y, new TextureRegion(assetManager.get(AssetManager.EXPLOSION)));
         p.color.set(1, 0.8f, 0, 0.8f);
         p.endColor.set(0.5f, 0, 0.5f, 0);
         p.maxLifetime = 1.5f;
