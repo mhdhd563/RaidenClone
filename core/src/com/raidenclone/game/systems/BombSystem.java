@@ -141,15 +141,16 @@ public class BombSystem {
             float progress = bombEffectTimer / bombEffectDuration;
             float alpha = 1.0f - progress;
             float scale = bombRadius / 16f; // 16 is base texture radius
+            Texture explosionTex = (Texture) entityManager.getAssetManager().get(AssetManager.EXPLOSION);
             
             batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE);
             batch.setColor(1, 0.8f, 0, alpha * 0.6f);
-            batch.draw(entityManager.getAssetManager().get(AssetManager.EXPLOSION),
+            batch.draw(explosionTex,
                       bombX - bombRadius, bombY - bombRadius, bombRadius * 2, bombRadius * 2);
             
             // Inner ring
             batch.setColor(1, 1, 0.5f, alpha * 0.4f);
-            batch.draw(entityManager.getAssetManager().get(AssetManager.EXPLOSION),
+            batch.draw(explosionTex,
                       bombX - bombRadius * 0.7f, bombY - bombRadius * 0.7f, bombRadius * 1.4f, bombRadius * 1.4f);
             
             batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);

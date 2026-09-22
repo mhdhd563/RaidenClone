@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.math.MathUtils;
 
 public class AssetManager extends com.badlogic.gdx.assets.AssetManager {
+    private static AssetManager instance;
+    
     public static final String PLAYER_SHIP = "player_ship";
     public static final String ENEMY_BASIC = "enemy_basic";
     public static final String ENEMY_FAST = "enemy_fast";
@@ -28,6 +30,14 @@ public class AssetManager extends com.badlogic.gdx.assets.AssetManager {
     public static final String BOMB_SOUND = "bomb";
     public static final String POWERUP_SOUND = "powerup";
     public static final String BG_MUSIC = "bg_music";
+    
+    public static AssetManager getInstance() {
+        return instance;
+    }
+    
+    public static void setInstance(AssetManager instance) {
+        AssetManager.instance = instance;
+    }
     
     public void loadAll() {
         createProceduralTextures();

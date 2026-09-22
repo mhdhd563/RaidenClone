@@ -14,6 +14,7 @@ public class RaidenClone extends Game {
     public void create() {
         batch = new SpriteBatch();
         assetManager = new AssetManager();
+        AssetManager.setInstance(assetManager);
         assetManager.loadAll();
         setScreen(new MenuScreen(this));
     }
