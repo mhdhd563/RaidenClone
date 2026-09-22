@@ -31,22 +31,21 @@ android {
     }
 }
 
-// Ensure core module is built before Android compilation
-afterEvaluate {
-    tasks.named('compileDebugJavaWithJavac') {
-        dependsOn project(':core').tasks.named('compileJava')
-    }
-    tasks.named('compileReleaseJavaWithJavac') {
-        dependsOn project(':core').tasks.named('compileJava')
-    }
-}
-
 dependencies {
     implementation project(":core")
+    implementation files(project(':core').tasks.named('jar').map { it.outputs.files }.get())
     implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
     implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
     implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
     implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
     implementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
     implementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+}
+
+// Ensure core JAR is built before Android compilation
+tasks.named('compileDebugJavaWithJavac') {
+    dependsOn project(':core').tasks.named('jar')
+}
+tasks.named('compileReleaseJavaWithJavac') {
+    dependsOn project(':core').tasks.named('jar')
 }
