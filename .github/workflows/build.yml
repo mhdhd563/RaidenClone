@@ -29,6 +29,7 @@ jobs:
           api-level: 34
           ndk-version: r26c
           cmdline-tools-version: latest
+          accept-android-sdk-licenses: true
 
       - name: Make gradlew executable
         run: chmod +x gradlew
