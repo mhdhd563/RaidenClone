@@ -43,6 +43,7 @@ public class GameScreen implements Screen {
     private float scorePopupTimer = 0;
     private String scorePopupText = "";
     private Vector2 scorePopupPos = new Vector2();
+    private com.badlogic.gdx.graphics.g2d.GlyphLayout glyphLayout = new com.badlogic.gdx.graphics.g2d.GlyphLayout();
     
     public GameScreen(RaidenClone game) {
         this.game = game;
@@ -328,12 +329,12 @@ public class GameScreen implements Screen {
         
         font.getData().setScale(1.2f);
         font.setColor(0.8f, 0.8f, 1, 1);
-        font.draw(batch, "WAVES CLEARED: " + waveManager.getCurrentWave(), 240 - font.getSpaceWidth() * 7, 370);
+        font.draw(batch, "WAVES CLEARED: " + waveManager.getCurrentWave(), 240 - glyphLayout.setText(font, "WAVES CLEARED: " + waveManager.getCurrentWave()).width / 2, 370);
         
         // Blinking continue
         float blink = (MathUtils.sin(gameOverTimer * 5) + 1) * 0.5f;
         font.setColor(1, 1, 1, blink);
-        font.draw(batch, "TOUCH TO RETURN TO MENU", 240 - font.getSpaceWidth() * 12, 280);
+        font.draw(batch, "TOUCH TO RETURN TO MENU", 240 - glyphLayout.setText(font, "TOUCH TO RETURN TO MENU").width / 2, 280);
         font.setColor(1, 1, 1, 1);
     }
     
