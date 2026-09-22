@@ -142,6 +142,8 @@ public class Player extends Entity {
     public float getEngineGlowPhase() { return engineGlowTimer; }
     public float getScreenShake() { return screenShake; }
     
+    public void setScreenShake(float screenShake) { this.screenShake = screenShake; }
+    
     public void hit() {
         if (!invulnerable) {
             health--;

@@ -125,9 +125,10 @@ public class CollisionSystem {
     }
     
     private void createHitParticles(float x, float y) {
+        AssetManager assetManager = entityManager.getAssetManager();
         for (int i = 0; i < 5; i++) {
             Particle p = Particle.createSpark(x, y, new com.badlogic.gdx.math.Vector2(
-                MathUtils.random(-1, 1), MathUtils.random(-1, 1)).nor());
+                MathUtils.random(-1, 1), MathUtils.random(-1, 1)).nor(), assetManager);
             entityManager.addEntity(p);
         }
     }
@@ -143,21 +144,21 @@ public class CollisionSystem {
             Particle p = new Particle(enemy.getPosition().x + enemy.getWidth()/2, 
                                     enemy.getPosition().y + enemy.getHeight()/2,
                                     new com.badlogic.gdx.graphics.g2d.TextureRegion(
-                                        assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
-            p.velocity.set(MathUtils.cos(angle) * speed, MathUtils.sin(angle) * speed);
-            p.color.set(1, MathUtils.random(0.3f, 0.8f), 0, 1);
-            p.endColor.set(1, 0, 0, 0);
-            p.maxLifetime = MathUtils.random(0.5f, 1.2f);
-            p.startScale = MathUtils.random(0.5f, 1.5f);
-            p.endScale = 0;
-            p.rotationSpeed = MathUtils.random(-720, 720);
-            p.additive = true;
+                                        (Texture) assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
+            p.setVelocity(MathUtils.cos(angle) * speed, MathUtils.sin(angle) * speed);
+            p.setColor(1, MathUtils.random(0.3f, 0.8f), 0, 1);
+            p.setEndColor(1, 0, 0, 0);
+            p.setMaxLifetime(MathUtils.random(0.5f, 1.2f));
+            p.setStartScale(MathUtils.random(0.5f, 1.5f));
+            p.setEndScale(0);
+            p.setRotationSpeed(MathUtils.random(-720, 720));
+            p.setAdditive(true);
             entityManager.addEntity(p);
         }
         
         // Screen shake for boss
         if (enemy.getType() == Enemy.Type.BOSS) {
-            entityManager.getPlayer().screenShake = 30;
+            entityManager.getPlayer().setScreenShake(30);
         }
     }
     
