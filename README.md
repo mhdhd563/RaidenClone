@@ -1,5 +1,8 @@
 # Raiden Clone - 雷电风格飞行射击游戏
 
+[![Build Android APK](https://github.com/mhdhd563/RaidenClone/actions/workflows/build.yml/badge.svg)](https://github.com/mhdhd563/RaidenClone/actions/workflows/build.yml)
+[![Download APK](https://img.shields.io/github/v/release/mhdhd563/RaidenClone?label=Download%20APK&include_prereleases)](https://github.com/mhdhd563/RaidenClone/releases)
+
 经典雷电致敬作品，使用 LibGDX 开发，支持 Android / Desktop。
 
 ## ✨ 游戏特性
