@@ -3,11 +3,9 @@ buildscript {
         google()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-        maven { url "https://libgdx.badlogicgames.com/maven/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.2'
-        classpath 'org.libgdx:libgdx-gradle-plugin:1.12.0'
     }
 }
 
@@ -30,7 +28,6 @@ allprojects {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-        maven { url "https://libgdx.badlogicgames.com/maven/" }
     }
 }
 
