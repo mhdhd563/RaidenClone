@@ -43,9 +43,11 @@ dependencies {
 }
 
 // Ensure core JAR is built before Android compilation
-tasks.named('compileDebugJavaWithJavac') {
-    dependsOn project(':core').tasks.named('jar')
-}
-tasks.named('compileReleaseJavaWithJavac') {
-    dependsOn project(':core').tasks.named('jar')
+afterEvaluate {
+    tasks.named('compileDebugJavaWithJavac') {
+        dependsOn project(':core').tasks.named('jar')
+    }
+    tasks.named('compileReleaseJavaWithJavac') {
+        dependsOn project(':core').tasks.named('jar')
+    }
 }
