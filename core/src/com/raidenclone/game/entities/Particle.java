@@ -26,6 +26,25 @@ public class Particle extends Entity {
         this.velocity.set(MathUtils.random(-100, 100), MathUtils.random(-100, 100));
     }
     
+    // Public setters for BombSystem and other systems
+    public void setVelocity(float x, float y) { this.velocity.set(x, y); }
+    public void setMaxLifetime(float maxLifetime) { this.maxLifetime = maxLifetime; }
+    public void setColor(float r, float g, float b, float a) { this.color.set(r, g, b, a); }
+    public void setEndColor(float r, float g, float b, float a) { this.endColor.set(r, g, b, a); }
+    public void setMaxLifetime(float maxLifetime) { this.maxLifetime = maxLifetime; }
+    public void setStartScale(float scale) { this.startScale = scale; }
+    public void setEndScale(float scale) { this.endScale = scale; }
+    public void setRotationSpeed(float speed) { this.rotationSpeed = speed; }
+    public void setGravity(float gravity) { this.gravity = gravity; }
+    public void setAdditive(boolean additive) { this.additive = additive; }
+    public void setColor(Color color) { this.color.set(color); }
+    public void setEndColor(Color endColor) { this.endColor.set(endColor); }
+    public void setStartScale(float scale) { this.startScale = scale; }
+    public void setEndScale(float scale) { this.endScale = scale; }
+    public void setRotationSpeed(float speed) { this.rotationSpeed = speed; }
+    public void setGravity(float gravity) { this.gravity = gravity; }
+    public void setAdditive(boolean additive) { this.additive = additive; }
+    
     public static Particle createExplosion(float x, float y, Color color, AssetManager assetManager) {
         Particle p = new Particle(x, y, new TextureRegion((Texture) assetManager.get(AssetManager.EXPLOSION)));
         p.color.set(color);
@@ -131,12 +150,7 @@ public class Particle extends Entity {
         }
     }
     
-    public void setColor(Color color) { this.color.set(color); }
-    public void setEndColor(Color endColor) { this.endColor.set(endColor); }
-    public void setStartScale(float scale) { this.startScale = scale; }
-    public void setEndScale(float scale) { this.endScale = scale; }
     public void setRotationSpeed(float speed) { this.rotationSpeed = speed; }
     public void setGravity(float gravity) { this.gravity = gravity; }
-    public void setMaxLifetime(float lifetime) { this.maxLifetime = lifetime; }
     public void setAdditive(boolean additive) { this.additive = additive; }
 }
