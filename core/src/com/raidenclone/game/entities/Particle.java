@@ -153,4 +153,9 @@ public class Particle extends Entity {
     public void setRotationSpeed(float speed) { this.rotationSpeed = speed; }
     public void setGravity(float gravity) { this.gravity = gravity; }
     public void setAdditive(boolean additive) { this.additive = additive; }
+    
+    // Helper method to copy current color to endColor
+    public void copyColorToEndColor() {
+        this.endColor.set(this.color);
+    }
 }

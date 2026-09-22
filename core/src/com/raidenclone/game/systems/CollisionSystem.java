@@ -1,5 +1,6 @@
 package com.raidenclone.game.systems;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 import com.raidenclone.game.entities.*;
 import com.raidenclone.game.utils.AssetManager;
@@ -212,7 +213,8 @@ public class CollisionSystem {
                 ((powerup.getType().color >> 8) & 0xFF) / 255f,
                 1
             );
-            p.setEndColor(p.color.r, p.color.g, p.color.b, 0);
+            p.copyColorToEndColor();
+            p.endColor.a = 0;
             p.setMaxLifetime(MathUtils.random(0.5f, 1.0f));
             entityManager.addEntity(p);
         }
