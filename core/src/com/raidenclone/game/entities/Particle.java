@@ -1,6 +1,7 @@
 package com.raidenclone.game.entities;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
@@ -116,14 +117,14 @@ public class Particle extends Entity {
             float a = color.a * invT + endColor.a * t;
             
             if (additive) {
-                batch.setBlendFunction(SpriteBatch.GL_SRC_ALPHA, SpriteBatch.GL_ONE);
+                batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE);
             }
             
             batch.setColor(r, g, b, a);
             super.render(batch);
             
             if (additive) {
-                batch.setBlendFunction(SpriteBatch.GL_SRC_ALPHA, SpriteBatch.GL_ONE_MINUS_SRC_ALPHA);
+                batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             }
             batch.setColor(1, 1, 1, 1);
         }
