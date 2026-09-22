@@ -31,6 +31,14 @@ android {
     }
 }
 
+// Ensure core module is built before Android compilation
+tasks.named('compileDebugJavaWithJavac') {
+    dependsOn ':core:compileJava'
+}
+tasks.named('compileReleaseJavaWithJavac') {
+    dependsOn ':core:compileJava'
+}
+
 dependencies {
     implementation project(":core")
     implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
