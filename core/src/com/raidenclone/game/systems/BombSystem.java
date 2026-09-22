@@ -122,14 +122,14 @@ public class BombSystem {
             Particle p = new Particle(enemy.getPosition().x + enemy.getWidth()/2, 
                                     enemy.getPosition().y + enemy.getHeight()/2,
                                     new com.badlogic.gdx.graphics.g2d.TextureRegion(
-                                        assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
-            p.velocity.set(MathUtils.cos(angle) * speed, MathUtils.sin(angle) * speed);
-            p.color.set(1, MathUtils.random(0.5f, 1f), MathUtils.random(0, 0.3f), 1);
-            p.endColor.set(0.5f, 0, 0.5f, 0);
-            p.maxLifetime = MathUtils.random(0.8f, 1.5f);
-            p.startScale = MathUtils.random(0.8f, 2.0f);
-            p.endScale = 0;
-            p.rotationSpeed = MathUtils.random(-720, 720);
+                                        (Texture) assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
+            p.setVelocity(MathUtils.cos(angle) * speed, MathUtils.sin(angle) * speed);
+            p.setColor(1, MathUtils.random(0.5f, 1f), MathUtils.random(0, 0.3f), 1);
+            p.setEndColor(0.5f, 0, 0.5f, 0);
+            p.setMaxLifetime(MathUtils.random(0.8f, 1.5f));
+            p.setStartScale(MathUtils.random(0.8f, 2.0f));
+            p.setEndScale(0);
+            p.setRotationSpeed(MathUtils.random(-720, 720));
             p.setAdditive(true);
             entityManager.addEntity(p);
         }
