@@ -1,7 +1,9 @@
 package com.raidenclone.game.systems;
 
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.MathUtils;
 import com.raidenclone.game.entities.*;
+import com.raidenclone.game.utils.AssetManager;
 
 public class BombSystem {
     private EntityManager entityManager;
@@ -53,6 +55,7 @@ public class BombSystem {
         // Create bomb wave particle
         Particle wave = Particle.createBombWave(x, y, maxBombRadius);
         entityManager.addEntity(wave);
+        wave.setAdditive(true);
         
         // Destroy all enemies and enemy bullets in radius
         destroyEnemiesInRadius();
@@ -102,7 +105,7 @@ public class BombSystem {
                 p.maxLifetime = 0.3f;
                 p.startScale = 0.5f;
                 p.endScale = 0;
-                p.additive = true;
+                p.setAdditive(true);
                 entityManager.addEntity(p);
             }
         }
@@ -127,7 +130,7 @@ public class BombSystem {
             p.startScale = MathUtils.random(0.8f, 2.0f);
             p.endScale = 0;
             p.rotationSpeed = MathUtils.random(-720, 720);
-            p.additive = true;
+            p.setAdditive(true);
             entityManager.addEntity(p);
         }
     }
@@ -139,21 +142,19 @@ public class BombSystem {
             float alpha = 1.0f - progress;
             float scale = bombRadius / 16f; // 16 is base texture radius
             
-            batch.setBlendFunction(com.badlogic.gdx.graphics.g2d.SpriteBatch.GL_SRC_ALPHA, 
-                                   com.badlogic.gdx.graphics.g2d.SpriteBatch.GL_ONE);
+            batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE);
             batch.setColor(1, 0.8f, 0, alpha * 0.6f);
-            batch.draw(com.raidenclone.game.utils.AssetManager.getInstance()
-                          .get(com.raidenclone.game.utils.AssetManager.EXPLOSION),
+            batch.draw(AssetManager.getInstance()
+                          .get(AssetManager.EXPLOSION),
                       bombX - bombRadius, bombY - bombRadius, bombRadius * 2, bombRadius * 2);
             
             // Inner ring
             batch.setColor(1, 1, 0.5f, alpha * 0.4f);
-            batch.draw(com.raidenclone.game.utils.AssetManager.getInstance()
-                          .get(com.raidenclone.game.utils.AssetManager.EXPLOSION),
+            batch.draw(AssetManager.getInstance()
+                          .get(AssetManager.EXPLOSION),
                       bombX - bombRadius * 0.7f, bombY - bombRadius * 0.7f, bombRadius * 1.4f, bombRadius * 1.4f);
             
-            batch.setBlendFunction(com.badlogic.gdx.graphics.g2d.SpriteBatch.GL_SRC_ALPHA, 
-                                   com.badlogic.gdx.graphics.g2d.SpriteBatch.GL_ONE_MINUS_SRC_ALPHA);
+            batch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
             batch.setColor(1, 1, 1, 1);
         }
     }
