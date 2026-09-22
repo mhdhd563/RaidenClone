@@ -1,0 +1,44 @@
+# Gradle
+.gradle/
+build/
+*/build/
+!*/build.gradle
+!*/build.gradle.kts
+
+# Local configuration
+local.properties
+gradle.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Android
+*.apk
+*.aar
+*.ap_
+*.dex
+*.class
+*.jar
+*.so
+*.o
+*.obj
+
+# Output
+android/build/outputs/
+desktop/build/
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.temp
