@@ -32,8 +32,13 @@ android {
 }
 
 // Ensure core module is built before Android compilation
-tasks.withType(JavaCompile).configureEach { task ->
-    task.dependsOn ':core:compileJava'
+afterEvaluate {
+    tasks.named('compileDebugJavaWithJavac') {
+        dependsOn project(':core').tasks.named('compileJava')
+    }
+    tasks.named('compileReleaseJavaWithJavac') {
+        dependsOn project(':core').tasks.named('compileJava')
+    }
 }
 
 dependencies {
