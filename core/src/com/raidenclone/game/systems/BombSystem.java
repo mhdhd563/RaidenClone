@@ -100,12 +100,12 @@ public class BombSystem {
                 // Small particle for bullet destruction
                 Particle p = new Particle(bullet.getPosition().x, bullet.getPosition().y,
                     new com.badlogic.gdx.graphics.g2d.TextureRegion(
-                        assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
-                p.color.set(1, 0.2f, 0.2f, 0.8f);
-                p.endColor.set(1, 0, 0, 0);
-                p.maxLifetime = 0.3f;
-                p.startScale = 0.5f;
-                p.endScale = 0;
+                        (Texture) assetManager.get(com.raidenclone.game.utils.AssetManager.EXPLOSION)));
+                p.setColor(1, 0.2f, 0.2f, 0.8f);
+                p.setEndColor(1, 0, 0, 0);
+                p.setMaxLifetime(0.3f);
+                p.setStartScale(0.5f);
+                p.setEndScale(0);
                 p.setAdditive(true);
                 entityManager.addEntity(p);
             }

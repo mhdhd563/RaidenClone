@@ -202,17 +202,18 @@ public class CollisionSystem {
     }
     
     private void createPowerupParticles(Powerup powerup) {
+        AssetManager assetManager = entityManager.getAssetManager();
         for (int i = 0; i < 10; i++) {
             Particle p = Particle.createSpark(powerup.getPosition().x, powerup.getPosition().y,
-                new com.badlogic.gdx.math.Vector2(MathUtils.random(-1, 1), MathUtils.random(-1, 1)).nor());
-            p.color.set(
+                new com.badlogic.gdx.math.Vector2(MathUtils.random(-1, 1), MathUtils.random(-1, 1)).nor(), assetManager);
+            p.setColor(
                 ((powerup.getType().color >> 24) & 0xFF) / 255f,
                 ((powerup.getType().color >> 16) & 0xFF) / 255f,
                 ((powerup.getType().color >> 8) & 0xFF) / 255f,
                 1
             );
-            p.endColor.set(p.color.r, p.color.g, p.color.b, 0);
-            p.maxLifetime = MathUtils.random(0.5f, 1.0f);
+            p.setEndColor(p.color.r, p.color.g, p.color.b, 0);
+            p.setMaxLifetime(MathUtils.random(0.5f, 1.0f));
             entityManager.addEntity(p);
         }
     }
